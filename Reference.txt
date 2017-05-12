@@ -1,0 +1,22 @@
+Reference
+
+0. Enron_scandal
+https://en.wikipedia.org/wiki/Enron_scandal
+
+1. sklearn: automated learning method selection and tuning
+http://optunity.readthedocs.io/en/latest/notebooks/notebooks/sklearn-automated-classification.html
+
+2. GridSearchCV
+http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html
+
+3. Adaboost
+http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html
+
+4. KNN
+http://scikit-learn.org/stable/modules/neighbors.html
+
+5. RandomForest
+http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html
+
+6. Vincent_Kaminski
+https://en.wikipedia.org/wiki/Vincent_Kaminski
