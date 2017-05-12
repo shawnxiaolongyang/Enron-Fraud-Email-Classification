@@ -8,7 +8,7 @@ The dataset contains 13 features and the label POI and 146 data points. There ar
 
 There are two principles for the outliers, find those not an actual people and those irrelevant from the selected features. I plot the data and find the ¡°TOTAL¡± is the combination of all other data, it did not indicate an actual person. We would also exclude those has almost all features 'NaN' point, include 'WODRASKA JOHN', 'WHALEY DAVID A', 'LEWIS RICHARD', 'PIRO JIM', 'WROBEL BRUCE', 'LOCKHART EUGENE E', 'THE TRAVEL AGENCY IN THE PARK', 'BROWN MICHAEL', 'HAYSLETT RODERICK J', 'SCRIMSHAW MATTHEW', 'GRAMM WENDY L¡¯. The further analysis based on selected features, if the one of the data has all these features ¡®NA¡¯, I would exclude that as an outlier. The data popped out were 'HAUG DAVID L', 'CLINE KENNETH W', 'WAKEHAM JOHN'.
 
-# 2. feature engineer
+# 2. Feature Engineer
 I tried to collect the TF-IDF of key words by POI and Non-POI in mail. I find the top 3 influential key words are ¡°Vinc¡±, ¡°Vkamin¡± and ¡°Vincent¡±, which all indicated the name ¡°Vincent Kaminski¡±, or ¡°KAMINSKI, WINCENTY J¡± showed in the dataset. Vince worked as Managing Director for Research at Enron and raised strong objections to the financial practices of Enron¡¯s CFO, who fraud concealed company¡¯s burgeoning debt. The TF-IDF model would have all the accuracy, precision and recall close to 1.
 
 Although the evaluation looks perfect and the new features are intuitively relevant, the TF-IDF model conclude only 14 POI and 2 Non-POI (since we did not know others actual email address based on their name in the dataset), the prediction won¡¯t help the whole dataset. In this case, I won't use this data in further analysis.
@@ -19,21 +19,21 @@ Since we did not know how many feature used would optimize the performance, I ha
 
 Since the features selected might correlated (each time decision tree choose a different features list for the classification), I use PCA to get the most important features in the final analysis. The PCA algorithm also do the data normalization and new features creation job.
 
-# 3. Model selection
+# 3. Model Selection
 The final decision based on K Nearest Neighbors, other algorithms include GaussianNB, Adaboost and Random Forest. KNN has the highest accuracy as 0.86900, highest precision as 0.75296 and highest recall as 0.31850. Adaboost also meet the rubric, but its accuracy and precision is lower than KNN. Random Forest has a recall lower than 0.3.
 
-# 4. Tune the parameters
+# 4. Tune Parameters
 Tuning the parameters would help you optimize the model performance. If you did not tune well, even if you used the correct model, it won¡¯t give the best result. The result should not only consider accuracy, but also recall and precision.
 
 For KNN, you need to tune the numbers of neighbors. For Random Forest, you need to tune the number of estimators, number of trees in the forest and number of features to consider for each split.
 
 I used the ¡°optunity¡± packages to auto tune the parameters. It showed that using KNN with a 2 neighbors would reach the best result, compared to all the models and all the parameters I set in the ¡°select¡±.
 
-# 5. Validation strategy
+# 5. Validation Strategy
 Validation is used to split the data into train and test part in the first place. It helps the model not over fit in training data but still get enough data for train. I started the validation using cross validation for the feature selection part, but
 then I used the StratifiedShuffleSplit function in test_classifier since it was the evaluation function the project request. The fold was 1,000, the dataset was random selected 1,000 times and the model ran 1,000 times for each model and parameters I tuned. It took quiet a long time for the auto tuning part.
 
-# 6. Evaluation metrics
+# 6. Evaluation Metrics
 Even though the result output gave Precision, Recall, F1, F2, I used the Precision, Recall for the evaluation. 
 T = True, F = False, P = Positive, N = Negative 
 Precision = TP / TP+FP = 637/ (209+637) = 0.75296 
